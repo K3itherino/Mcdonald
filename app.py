@@ -34,7 +34,7 @@ def signup():
             
             if find:
                 
-                return redirect("http://127.0.0.1:5000/error")
+                return redirect("/error")
                 
 
                 
@@ -58,7 +58,7 @@ def error():
         return render_template("error.html")
     
     elif request.method == 'POST':
-        return redirect("http://127.0.0.1:5000/signup")
+        return redirect("/signup")
 
 
         
@@ -71,7 +71,7 @@ def login():
     
     if request.method == 'GET':
         if "user" in session:
-            return redirect("http://127.0.0.1:5000/profile")
+            return redirect("/profile")
         else:
             return render_template("login.html")
     
@@ -91,14 +91,14 @@ def login():
                 
                 session["user"] = username
                 
-                return redirect("http://127.0.0.1:5000/")
+                return redirect("/")
             
             else:
                 
-                return redirect("http://127.0.0.1:5000/error")
+                return redirect("/error")
         
         if not user:
-            return redirect("http://127.0.0.1:5000/error")
+            return redirect("/error")
 
 @app.route("/profile", methods = ['POST', 'GET'])
 def profile_():
