@@ -44,7 +44,7 @@ def signup():
         
                 database.insertRow(username, password, "users")
                 
-                return redirect("http://127.0.0.1:5000/login")
+                return redirect("/login")
     
     elif request.method == 'GET':
         
