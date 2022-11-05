@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Profile</title></head>
+    <style>
+        body {box-sizing: border-box;
+        padding: 0%;
+        margin: 0%;
+        font-family: monospace;
+}
+        div {  
+  background-color: rgb(61, 62, 65); 
+ 
+            margin-bottom: 3%;
+  height: 2.5pc; 
+  width: 100%; 
+  padding: 0%;
+
+}
+
+.ca {font-family: monospace; margin: 3%; font-size: xx-large; text-decoration: none;}
+a {font-family: monospace; margin: 7%; font-size: xx-large; text-decoration: none;}
+h3 {margin-bottom: 4%; margin-top: 3%;}
+label {margin-bottom: 3%;}
+img {float: left; width: 10pc; }
+
+    </style>
+    <body>
+        <div>
+
+            <a class="ca" href="{{('/')}}">Home</a><a href="{{('/pedidos')}}" class="ca">Pedidos</a>
+            
+
+
+        </div>
+        <h2>Hola {{profile}}</h2>
+        <form method = "post">
+            <label for = "menjar">Escull menjar: </label>
+            <select name="menjar" id="menjar">
+                <option value="burger">Menu Normal</option>
+                <option value="cheeseburger">Menu Montassir</option>
+            </select>
+            <label for="q">Quantitat:</label>
+            <input type="text" placeholder="Quantitat" name="num">
+            <button type="submit">Afegir</button>
+        </form >
+        <a href="{{('/menu/normal')}}" class="a"><img src="https://mcdonalds.es/api/cms/images/mcdonalds-es/7257c8e9-b7f2-4b09-8cda-fb28787bd1f3_1080x943_Men%C3%BA_SY.png?auto=compress,format"></a>
+        <H3>Menus normales: {{MenuNormal}} Precio total: {{priceN}} * 5€ la unidad</H3>
+        <form method="post"><label for="elim1">Quantitat a eliminar</label><input name="elim1"type="text" ><button type="submit" value="Eliminar">Eliminar</button>
+            <a class="a" href="{{('/menu/especial')}}"><img src="https://s7d1.scene7.com/is/image/mcdonalds/nav_full_menu_160x160_:category-panel-left-desktop"></a>
+           <h3 >Menus especiales: {{MenuEspecial}} Precio total: {{priceS}} * 10€ la unidad</h3><label for="elim2">Quantitat a eliminar</label><input name="elim2"type="text"><button type="submit" value="Eliminar">Eliminar</button></form>
+            <h4>Precio total: {{total}} €</h4>
+        <form action="checkout">
+
+            <button type="submit">Afegir</button>
+        </form>
+            <a href = "{{('/logout')}}">Logout</a>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Pedidos</title></head>
+    <style>
+        body {box-sizing: border-box;
+        padding: 0%;
+        margin: 0%;
+        font-family: monospace;
+}
+        div {  
+        background-color: rgb(61, 62, 65); 
+       
+                  margin-bottom: 3%;
+        height: 2.5pc; 
+        width: 100%; 
+        padding: 0%;}
+        .ca {font-family: monospace; margin: 3%; font-size: xx-large; text-decoration: none;}
+        img {width: 5pc; float: left;}
+        .separador {width: 25%; height: 9%; background: rgb(red, green, rgb(22, 22, 48)); margin-bottom: 3%;margin-top: 6%;} 
+    </style>
+    <body>
+        <div>
+            <a class="ca" href="{{('/profile')}}">Volver a la cesta</a>
+        </div>
+        {%for product in productos_%}
+            {% if product[2] == "burger" %}
+                <div class="separador"><h2>Id de pedido: {{product[0]}}</h2></div>
+                <img src="https://mcdonalds.es/api/cms/images/mcdonalds-es/7257c8e9-b7f2-4b09-8cda-fb28787bd1f3_1080x943_Men%C3%BA_SY.png?auto=compress,format"><h3>Menu Normal</h3><h4>Cantidad: {{product[3]}}</h4>
+                <form method="POST">
+                    <button type="submit" value="{{product[0]}}" name="eliminar">Cancelar</button>
+                </form>
+            {%endif%}
+            {% if product[2] == "cheeseburger" %}
+                <div class="separador"><h2>Id de pedido: {{product[0]}}</h2></div>
+                <img src="https://s7d1.scene7.com/is/image/mcdonalds/nav_full_menu_160x160_:category-panel-left-desktop"><h3>Menu Especial</h3><h4>Cantidad: {{product[3]}}</h4>
+                <form method="POST">
+                    <button type="submit" value="{{product[0]}}" name="eliminar">Cancelar</button>
+                </form>
+            {%endif%}
+        {%endfor%}
+
+    </body>
+</html>

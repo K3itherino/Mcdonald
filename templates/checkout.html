@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<style>
+                body {box-sizing: border-box;
+        padding: 0%;
+        margin: 0%;
+        font-family: monospace;
+}
+    .img1 {width: 9%;  margin-top: 0%; margin-bottom: 2%;}
+    div {  
+        background-color: rgb(61, 62, 65); 
+       
+                  margin-bottom: 3%;
+        height: 2.5pc; 
+        width: 100%; 
+        padding: 0%;}
+        a {font-family: monospace; margin: 7%; font-size: xx-large; text-decoration: none;}
+        .ac {margin-bottom: 8%;}
+        .pop-up { background-color: aliceblue;
+  display: flex;
+
+  height: 20pc;
+  border-radius: 2%;
+  border: 3px solid rgb(255, 159, 159);
+  width: 20pc;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  
+    visibility: hidden;
+   
+
+} 
+  
+   
+.closepop-up { 
+  visibility: hidden;
+   
+
+}
+
+.openpop-up { 
+  visibility: visible;
+   
+
+}
+.c {height: 3pc; position: absolute;
+left: 60%; top: 50%;
+transform: translate(-50%, -50%); }
+h3 {margin-bottom: 2%;}
+.h {height: 3pc; position: absolute;
+left: 40%; top: 50%;
+transform: translate(-50%, -50%); }
+</style>  
+
+<html>
+<head><title>Checkout</title></head>
+    <body>
+    <div>
+            <a class="ca" href="{{('/profile')}}">Volver a la cesta</a><a class="ca" href="{{('/pedidos')}}">Pedidos</a>
+    </div>
+        {% if menu != 0%}
+        <img class="img1"src="https://mcdonalds.es/api/cms/images/mcdonalds-es/7257c8e9-b7f2-4b09-8cda-fb28787bd1f3_1080x943_Men%C3%BA_SY.png?auto=compress,format"><h2>Tienes {{menu}} normales</h2>
+        {% endif %}
+        <br>
+        {% if especial !=0%}
+        <img  class="img2" src="https://s7d1.scene7.com/is/image/mcdonalds/nav_full_menu_160x160_:category-panel-left-desktop"><h2>Tienes {{especial}} menus especiales</h2>
+        {% endif %}
+        {% if menu and especial == 0%}
+        <h2>No menu en la cesta</h2>
+        {% endif %}
+
+            <button type="submit" onclick="openPopup()">Ok</button>
+ 
+    
+    <div class="pop-up" name="pop-up" id="pop-up">
+        <h3>Are you sure you want to confirm this purchase?</h3>
+        
+        
+            <button class ="c" type="button" onclick="closePopup()">Cancel</button>
+        <form method="post">
+            <button class="h" type="submit" name="bought">Yes</button>
+        </form>
+    </div>
+    <script>
+        let popup = document.getElementById("pop-up");
+        function openPopup(){
+            popup.classList.add("openpop-up")
+        }
+        function closePopup() {
+            popup.classList.remove("openpop-up")
+        }
+
+
+    </script>
+    </body>
+</html>
