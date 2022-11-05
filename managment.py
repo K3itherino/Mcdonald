@@ -10,7 +10,7 @@ class accmanag:
         
         self.conn.commit()
    
-    def createTable(self, value ):
+    def createTable(self, value):
         
         self.cursor.execute(
         f"""CREATE TABLE {value} (
